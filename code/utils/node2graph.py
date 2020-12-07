@@ -32,5 +32,4 @@ def node2graph(dataset):
         dataset[i].y[0] = indexswap[dataset[i].y[0]]
         dataset[i].y.resize_(1)
 
-
     return dataset

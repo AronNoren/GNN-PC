@@ -4,6 +4,7 @@ parent_dir_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(parent_dir_path)
 from utils.node2graph import node2graph
 from torch_geometric.datasets import ShapeNet
+from torch_geometric.transforms import FixedPoints
 def data_loader(root = 'data/ShapeNet',categories = None,points = None):
 	'''
 	loads/downloads the ShapeNet dataset and created graph labels from node segment labeling.
