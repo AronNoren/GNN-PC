@@ -47,7 +47,7 @@ class PointNet(torch.nn.Module):
         self.conv2 = PointNetLayer(32, 32)
         self.classifier = Linear(32, classes)
         
-    def forward(self, pos, batch):
+    def forward(self, pos, batch, normal=None):
         # Compute the kNN graph:
         # Here, we need to pass the batch vector to the function call in order
         # to prevent creating edges between points of different examples.
