@@ -5,7 +5,7 @@ sys.path.append(parent_dir_path)
 import torch
 from torch_geometric.data import DataLoader
 from utils.data_loader import get_ShapeNet
-from models.PointNet import get_model
+from models.PPFNet import get_model
 from torch_geometric.transforms import Compose, RandomRotate
 from torch_geometric.transforms import FixedPoints
 torch.manual_seed(123)
