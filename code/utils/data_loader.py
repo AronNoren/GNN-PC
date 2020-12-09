@@ -2,9 +2,9 @@ import sys
 import os
 parent_dir_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(parent_dir_path)
-from utils.node2graph import node2graph
-from torch_geometric.datasets import ShapeNet
-def data_loader(root = 'data/ShapeNet',categories = None,points = None):
+from utils.ShapeNet import ShapeNet
+from torch_geometric.transforms import FixedPoints
+def get_ShapeNet(root = 'data/ShapeNet',categories = None,points = 256,include_normal = False):
 	'''
 	loads/downloads the ShapeNet dataset and created graph labels from node segment labeling.
 	Input: 
@@ -15,5 +15,5 @@ def data_loader(root = 'data/ShapeNet',categories = None,points = None):
 	if points is not None:
 		dataset = ShapeNet(root,categories,transform = FixedPoints(num=points))
 	else:
-		dataset = ShapeNet(root, categories)
-	return node2graph(dataset)
+		dataset = ShapeNet(root, categories,include_normals = False)
+	return dataset
