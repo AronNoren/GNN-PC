@@ -4,15 +4,14 @@ parent_dir_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(parent_dir_path)
 import torch
 from torch_geometric.data import DataLoader
-from utils.data_loader import data_loader
 from models.PointNet import get_model
 
 def train_PN(train_dataset,SAVENAME = 'model',validation_dataset = None,batchsize = 10,n_epochs =5,shuffled = True,weight = False):
     SAVEPATH = 'code/models/saved_models/' + SAVENAME + '.pkl'
-    n_classes = max(train_dataset.data.y)
+    n_classes = train_dataset.num_classes
     train_loader = DataLoader(train_dataset, batch_size=batchsize,shuffle = shuffled)
     print(n_classes)
-    model = get_model(n_classes.item())
+    model = get_model(n_classes)
     optimizer = torch.optim.Adam(model.parameters(), lr=0.01)
     if weight is not False:
         weight = torch.tensor([1.0,35.0,50.0,3.0,0.72,39.0,3.43])
