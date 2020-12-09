@@ -8,7 +8,7 @@ from models.PointNet import get_model
 from utils.training import train_PN
 from utils.evaluation import evaluate_PN
 from torch_geometric.transforms import FixedPoints
-dataset = get_ShapeNet(root = 'data/ShapeNet')
+dataset = get_ShapeNet(root = 'data/ShapeNet',transformation=FixedPoints(num=32))
 traindata = dataset[:int(4*len(dataset)/5)]
 testdata = dataset[int(4*len(dataset)/5):]
 model = train_PN(traindata,n_epochs = 3)

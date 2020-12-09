@@ -13,7 +13,7 @@ def evaluate_PN(model,test_dataset):
         with torch.no_grad():
             total_correct = 0
             for data in loader:
-                logits = model(data.pos, data.batch)
+                logits = model(data.pos, data.batch, data.x)
                 pred = logits.argmax(dim=-1)
                 total_correct += int((pred == data.y).sum())
 

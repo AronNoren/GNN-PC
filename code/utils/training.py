@@ -26,7 +26,7 @@ def train_PN(train_dataset,SAVENAME = 'model',validation_dataset = None,batchsiz
         for data in train_loader:
             #print(data.y)
             optimizer.zero_grad()  # Clear gradients.
-            logits = model(data.pos, data.batch)  # Forward pass.
+            logits = model(data.pos, data.batch, data.x)  # Forward pass.
             loss = criterion(logits, data.y)  # Loss computation.
 
             loss.backward()  # Backward pass.

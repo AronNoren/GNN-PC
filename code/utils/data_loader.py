@@ -7,7 +7,7 @@ from torch_geometric.transforms import FixedPoints
 '''
 Here we can add more datasets
 '''
-def get_ShapeNet(root = 'data/ShapeNet',categories = None,transformation=None,include_normal = False):
+def get_ShapeNet(root = 'data/ShapeNet',categories = None,transformation=None,include_normal = True):
 
 	'''
 	loads/downloads the modified ShapeNet dataset into CPU.
