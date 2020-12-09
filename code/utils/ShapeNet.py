@@ -11,7 +11,11 @@ from torch_geometric.io import read_txt_array
 
 
 class ShapeNet(InMemoryDataset):
-    r"""The ShapeNet part level segmentation dataset from the `"A Scalable
+    r"""Edited Dataset from pytorch geometric, 
+    now with graph labeling instead of node labeling
+
+
+    The ShapeNet part level segmentation dataset from the `"A Scalable
     Active Framework for Region Annotation in 3D Shape Collections"
     <http://web.stanford.edu/~ericyi/papers/part_annotation_16_small.pdf>`_
     paper, containing about 17,000 3D shape point clouds from 16 shape

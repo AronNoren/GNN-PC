@@ -4,9 +4,12 @@ parent_dir_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(parent_dir_path)
 from utils.ShapeNet import ShapeNet
 from torch_geometric.transforms import FixedPoints
+'''
+Here we can add more datasets
+'''
 def get_ShapeNet(root = 'data/ShapeNet',categories = None,points = 256,include_normal = False):
 	'''
-	loads/downloads the ShapeNet dataset and created graph labels from node segment labeling.
+	loads/downloads the modified ShapeNet dataset into CPU.
 	Input: 
 		root, directory of Dataset
 		categories, list of categories to include e.g. ['Airplane','Car']. None for all.
