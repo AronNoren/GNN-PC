@@ -19,5 +19,5 @@ def scatterplot(pos):
     #ax.set_xlabel('X Label')
     #ax.set_ylabel('Y Label')
     #ax.set_zlabel('Z Label')
-    plt.axis('off')
+    #plt.axis('off')
     plt.show()
