@@ -4,8 +4,7 @@ parent_dir_path = os.path.dirname(os.path.dirname(os.path.realpath(__file__)))
 sys.path.append(parent_dir_path)
 import torch
 from torch_geometric.data import DataLoader
-import models.PointNet
-import models.PPFNet
+from models import PPFNet, PointNet
 
 def train_PN(train_dataset,validation_dataset = None,batchsize = 10,n_epochs =5,shuffled = True,weight = False):
     '''
