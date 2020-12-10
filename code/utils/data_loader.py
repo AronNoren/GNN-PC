@@ -7,7 +7,7 @@ from utils.ShapeNet import ShapeNet
 '''
 Here we can add more datasets
 '''
-def get_ShapeNet(root = 'data/ShapeNet',split = 0.8,categories = None,transformation=None,include_normal = False):
+def get_ShapeNet(root = 'data/ShapeNet',split = 0.8,categories = None,transformation=None,include_normal = True):
 
     '''
     loads/downloads the modified ShapeNet dataset into CPU.
