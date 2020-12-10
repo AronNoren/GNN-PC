@@ -15,7 +15,7 @@ def train_PN(train_dataset,validation_dataset = None,batchsize = 10,n_epochs =5,
     batchsize = 10 (int) nr of data from train_dataset to process in parallell.
     n_epochs = 5 (int) nr of times the train_dataset is trained on.
     shuffled = True (bool) shuffles train_dataset before dividing into batches.
-    weight = False (bool) for uneven dataset --TODO--
+    weight = False (bool) used for uneven dataset to 
     '''
     #SAVEPATH = 'code/models/saved_models/' + SAVENAME + '.pkl'
     n_classes = train_dataset.num_classes
@@ -46,7 +46,6 @@ def train_PN(train_dataset,validation_dataset = None,batchsize = 10,n_epochs =5,
         return total_loss / len(train_loader.dataset)
 
     for epoch in range(1, n_epochs):
-        print(epoch)
         loss = train(model, optimizer, train_loader)
         val_acc = 0
         if validation_dataset is not None:
