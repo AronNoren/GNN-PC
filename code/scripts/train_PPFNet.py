@@ -19,7 +19,7 @@ torch.save(model.state_dict(), SAVEPATH)
 #train model on randomly rotated dataset
 rotated_traindata, rotated_testdata = get_ShapeNet(root = 'data/ShapeNet',transformation = transform(points = 256,rotate = 180))
 
-rotated_model = train_PN(rotated_traindata,n_epochs = 10)
+rotated_model = train_PPFNet(rotated_traindata,n_epochs = 10)
 rotated_SAVEPATH = 'code/models/saved_models/new_PPFNetmodel_rotate.pkl'
 torch.save(rotated_model.state_dict(), rotated_SAVEPATH)
 
