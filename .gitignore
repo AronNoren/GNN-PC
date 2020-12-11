@@ -1,7 +1,9 @@
 # dataset
 data/*/
+data/*
 #models
 code/models/saved_models/*
+code/models/saved_models/*/
 
 # Webp images
 *.webp
