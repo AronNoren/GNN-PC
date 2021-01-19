@@ -31,7 +31,29 @@ class PPFNet(torch.nn.Module):
             Linear(hidden_layers, hidden_layers)
         ) 
         self.conv2 = PPFConv(mlp2)
-        self.classifier = Linear(hidden_layers, classes)
+        mlp3 = Sequential(
+            Linear(hidden_layers + 4,hidden_layers),
+            ReLU(),
+            Linear(hidden_layers, hidden_layers)
+        ) 
+        self.conv3 = PPFConv(mlp3)
+        self.classifier = Sequential(
+            Linear(hidden_layers,hidden_layers),
+            ReLU(),
+            Linear(hidden_layers,hidden_layers),
+            ReLU(),
+            Linear(hidden_layers,hidden_layers),
+            ReLU(),
+            Linear(hidden_layers,hidden_layers),
+            ReLU(),
+            Linear(hidden_layers,hidden_layers),
+            ReLU(),
+            Linear(hidden_layers,hidden_layers),
+            ReLU(),
+            Linear(hidden_layers,hidden_layers),
+            ReLU(),
+            Linear(hidden_layers, classes)
+        )
         
     def forward(self, pos, batch, normal, h=None):
         # DON'T USE POSITION AS FEATURES -> LEAVE h=None
@@ -46,6 +68,8 @@ class PPFNet(torch.nn.Module):
         h = h.relu()
         h = self.conv2(x=h, pos=pos, edge_index=edge_index, normal=normal)
         h = h.relu() 
+        h = self.conv3(x=h, pos=pos, edge_index=edge_index, normal=normal)
+        h = h.relu() 
 
         # 4. Global Pooling.
         h = global_mean_pool(h, batch)  # Pooling scheme can be changed to ex: glboal_max_pool
@@ -53,5 +77,5 @@ class PPFNet(torch.nn.Module):
         # 5. Classifier.
         return self.classifier(h)
 
-def get_model(classes,num_features=0, hidden_layers=32, weights=None):
+def get_model(classes,num_features=0, hidden_layers=64, weights=None):
 	return PPFNet(classes, num_features, hidden_layers)
